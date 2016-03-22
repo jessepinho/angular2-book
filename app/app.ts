@@ -1,3 +1,4 @@
+import {AddTodo} from './add-todo.component';
 import {Component} from 'angular2/core';
 import {TodosList} from './todos-list.component';
 import {Todo} from './todo';
@@ -8,8 +9,9 @@ import {Todo} from './todo';
     <h4>Todos list</h4>
     <h5>Number of todos: <span class="badge">{{todos.length}}</span></h5>
     <todos-list [todos]="todos"></todos-list>
+    <add-todo [todos]="todos"></add-todo>
   `,
-  directives: [TodosList]
+  directives: [TodosList, AddTodo]
 })
 export class App {
   todos: Array<Todo>;

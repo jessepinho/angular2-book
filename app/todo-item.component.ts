@@ -21,7 +21,7 @@ import {Todo} from './todo';
     <hr>
     <div align="right" class="row">
       <div class="col-md-12">
-        <button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-t"></span> Delete</button>
+        <button class="btn btn-danger btn-sm" (click)="deleteTodo()"><span class="glyphicon glyphicon-t"></span> Delete</button>
       </div>
     </div>
   `
@@ -29,5 +29,8 @@ import {Todo} from './todo';
 export class TodoItem {
   todo: Todo;
   constructor() {
+  }
+  deleteTodo() {
+    this.todo.setToCompleted();
   }
 }

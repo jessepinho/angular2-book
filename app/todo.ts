@@ -5,4 +5,8 @@ export class Todo {
     private completed?:boolean) {
       this.completed = false;
     }
+  setToCompleted() {
+    this.completed = true;
+    return false;
+  }
 }

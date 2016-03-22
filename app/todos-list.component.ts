@@ -8,7 +8,7 @@ import {TodoItem} from './todo-item.component';
   template: `
     <ul class="list-group">
       <div *ngFor="#todo of todos">
-        <li class="list-group-item">
+        <li *ngIf="todo.completed == false" class="list-group-item">
           <todo-item [todo]="todo"></todo-item>
         </li>
       </div>
