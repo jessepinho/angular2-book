@@ -1,25 +1,32 @@
-import {AddTodo} from './add-todo.component';
+import {bootstrap} from 'angular2/platform/browser';
 import {Component} from 'angular2/core';
-import {TodosList} from './todos-list.component';
-import {Todo} from './todo';
 
 @Component({
-  selector: 'my-app',
+  selector: 'key-up',
   template: `
-    <h4>Todos list</h4>
-    <h5>Number of todos: <span class="badge">{{todos.length}}</span></h5>
-    <todos-list [todos]="todos"></todos-list>
-    <add-todo [todos]="todos"></add-todo>
-  `,
-  directives: [TodosList, AddTodo]
+    <div class="panel panel-primary">
+      <div class="panel-heading">Angular 2 Event Binding Demo - Start typing here:</div>
+      <div class="panel-body">
+        <div>
+          <input (keyup)="onKey($event)">
+        </div>
+        <hr>
+        <div>
+          <h5>Resulting keyup events: <button class="btn btn-sm btn-primary pull-right" (click)="reset()">Reset</button></h5>
+          <div>{{values}}</div>
+        </div>
+      </div>
+    </div>
+  `
 })
-export class App {
-  todos: Array<Todo>;
-  constructor() {
-    this.todos = [
-      new Todo('Item 1', 'Description 1', 'Jesse'),
-      new Todo('Item 2', 'Description 2', 'Jesse'),
-      new Todo('Item 3', 'Description 3', 'Jesse')
-    ];
+class KeyUpComponent {
+  values = '';
+  onKey(event: Event) {
+    this.values += event.target.value + ' | ';
+  }
+  reset() {
+    this.values = '';
   }
 }
+
+bootstrap(KeyUpComponent);
