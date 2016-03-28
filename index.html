@@ -9,6 +9,7 @@
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
 
     <script>
       System.config({
@@ -19,13 +20,13 @@
           }
         }
       });
-      System.import('app/app')
+      System.import('app/boot')
             .then(null, console.error.bind(console));
     </script>
   </head>
   <body>
     <div class="container">
-      <h1>Learning Angular 2 <small>Chapter 04</small></h1>
+      <h1>Learning Angular 2 <small>Chapter 05</small></h1>
       <my-app>Loading ...</my-app>
     </div>
   </body>
