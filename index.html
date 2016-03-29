@@ -1,11 +1,13 @@
 <!doctype html>
 <html>
   <head>
+    <base href="/">
     <title>Angular 2</title>
     <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
     <script src="node_modules/systemjs/dist/system.src.js"></script>
     <script src="node_modules/rxjs/bundles/Rx.js"></script>
     <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script src="node_modules/angular2/bundles/router.dev.js"></script>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -18,6 +20,9 @@
             format: 'register',
             defaultExtension: 'js'
           }
+        },
+        paths: {
+          underscore: './node_modules/underscore/underscore.js'
         }
       });
       System.import('app/boot')
