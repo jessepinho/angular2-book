@@ -1,22 +1,41 @@
 import {Car} from './car';
+import {Http, RequestOptions, Headers, Response} from 'angular2/http';
 import {Injectable} from 'angular2/core';
 import * as _ from 'underscore';
 
 @Injectable()
 export class CarService {
+  private _backendUrl = 'http://meteor-117867.nitrousapp.com:8080/api';
+  constructor(private http: Http) {}
+
   getCars() {
-    return carsPromise;
+    return this.http.get(this._backendUrl + '/cars')
+      .map(res => <Car[]> res.json())
+      .catch(this.handleError)
+      .toPromise();
   }
+
   getCar(id: string) {
-    return carsPromise.then(cars => cars.filter(car => car.id == id)[0]);
+    return this.http.get(this._backendUrl + '/cars/' + id)
+      .map(res => <Car> res.json())
+      .catch(this.handleError)
+      .toPromise();
   }
+
   addCar(newCar: Car) {
-    CARS.push(newCar);
+    let body = JSON.stringify(newCar),
+        headers = new Headers({ 'Content-Type': 'application/json' }),
+        options = new RequestOptions({ headers });
+
+    return this.http.post(this._backendUrl + '/cars', body, options)
+      .catch(this.handleError)
+      .subscribe(res => {
+        console.log(res.json());
+      });
+  }
+
+  private handleError(error: Response) {
+    console.error(error);
+    return Observable.throw(error.json().error || 'Server error');
   }
 }
-
-var CARS = [
-      new Car(_.uniqueId('car_'), 'BMW', 'X5', 'Diesel', 'SUVs', 250, 250),
-      new Car(_.uniqueId('car_'), 'BMW', 'X1', 'Diesel', 'SUVs', 200, 150)
-    ],
-    carsPromise = Promise.resolve(CARS);

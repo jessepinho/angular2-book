@@ -3,7 +3,6 @@ import {Component} from 'angular2/core';
 import {CarDetailComponent} from './car-detail.component';
 import {CarFormComponent} from './car-form.component';
 import {CarsListComponent} from './cars-list.component';
-import {CarService} from './car.service';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
 @Component({
@@ -23,8 +22,7 @@ import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
       </div>
     </div>
   `,
-  directives: [ROUTER_DIRECTIVES],
-  providers: [CarService]
+  directives: [ROUTER_DIRECTIVES]
 })
 @RouteConfig([
   { path: '/cars', name: 'CarsList', component: CarsListComponent, useAsDefault: true },

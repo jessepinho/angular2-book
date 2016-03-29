@@ -1,6 +1,7 @@
 import {Car} from './car';
 import {CarService} from './car.service';
 import {Component} from 'angular2/core';
+import {provide} from 'angular2/core';
 import {Router} from 'angular2/router';
 
 @Component({
@@ -27,7 +28,8 @@ import {Router} from 'angular2/router';
 export class CarsListComponent {
   cars: Car[];
 
-  constructor(private _router: Router, private _service: CarService) {}
+  constructor(private _router: Router, private _service: CarService) {
+  }
 
   ngOnInit() {
     this._service.getCars().then(cars => this.cars = cars);

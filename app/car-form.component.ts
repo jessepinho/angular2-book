@@ -10,7 +10,7 @@ import * as _ from 'underscore';
   templateUrl: 'app/car-form.component.html'
 })
 export class CarFormComponent {
-  subumitted = false;
+  submitted = false;
   fuelTypes = ['Petrol', 'Diesel', 'Hybrid', 'Electric'];
   bodyStyles = ['Convertibles', 'Coupes', 'Hatchbacks', 'Vans', 'Sedans', 'SUVs', 'Trucks', 'Wagons'];
 
